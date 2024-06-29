@@ -13,7 +13,7 @@ I am a student third year. Study in IT field. In parallel with main studies I st
 * Vue.js (Basic)
 * Visual Studio Code
 ## Code Example
-__Task:__ _Complete the solution so that the function will break up camel casing, using a space between words._
+__Description:__ _Complete the solution so that the function will break up camel casing, using a space between words._
 ```
 function solution(string) {
   let str2 = ``;
