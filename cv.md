@@ -5,6 +5,8 @@
 * __Email:__ aam-2003@mail.ru
 * Discord-nickname: AR1D (@Alex06052003)
 * [GitHub](https://github.com/Alex06052003)
+## About Myself
+I am a student third year. Study in IT field. In parallel with main studies I study web development. I don't have work experience. But I really want grow and develop in this field. Now I can create simple website using HTML, CSS, and Vue.js 
 ## Skills
 * HTML5, CSS3
 * JavaScript (Basic)
