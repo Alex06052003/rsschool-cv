@@ -1,11 +1,156 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
-	<title>Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>cv</title>
+	<link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="./style.css">
 </head>
 
-<body></body>
+<body>
+	<header class="header">
+		<div class="container">
+			<nav class="header-menu">
+				<ul class="header-menu-list">
+					<li class="header-menu-item">
+						<a href="#contacts" class="header-menu-link">Contacts</a>
+					</li>
+					<li class="header-menu-item">
+						<a href="#about" class="header-menu-link">About Myself</a>
+					</li>
+					<li class="header-menu-item">
+						<a href="#skills" class="header-menu-link">Skills</a>
+					</li>
+					<li class="header-menu-item">
+						<a href="#code" class="header-menu-link">Code Example</a>
+					</li>
+					<li class="header-menu-item">
+						<a href="#projects" class="header-menu-link">Projects</a>
+					</li>
+					<li class="header-menu-item">
+						<a href="#experience" class="header-menu-link">Experience</a>
+					</li>
+					<li class="header-menu-item">
+						<a href="#education" class="header-menu-link">Education</a>
+					</li>
+					<li class="header-menu-item">
+						<a href="#english" class="header-menu-link">English</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			<section class="profile">
+				<img class="profile-image" src="./assets/img/ava.png" alt="Manyakalo Alexander" width="350"
+					height="350" loading="lazy">
+				<h1 class="profile-title">Manyakalo <br> Alexander</h1>
+			</section>
+			<section id="contacts" class="contacts">
+				<h2 class="contacts-title">Contacts</h2>
+				<ul class="contacts-list list-left">
+					<li class="contacts-item">
+						Location:
+						<a href="https://yandex.ru/maps/-/CDGmF-KF" class="contacts-link" target="_blank">Irkutsk, Russia</a>
+					</li>
+					<li class="contacts-item">
+						Phone:
+						<a href="tel:+79647369353" class="contacts-link">+79647369353</a>
+					</li>
+					<li class="contacts-item">
+						Email:
+						<a href="mailto:aam-2003@mail.ru" class="contacts-link">aam-2003@mail.ru</a>
+					</li>
+					<li class="contacts-item">
+						Discord:
+						<a href="https://discord.com/users/ar1d" class="contacts-link" target="_blank">AR1D (@Alex06052003)</a>
+					</li>
+					<li class="contacts-item">
+						GitHub:
+						<a href="https://github.com/Alex06052003" class="contacts-link" target="_blank">GitHub</a>
+					</li>
+				</ul>
+			</section>
+			<section id="about" class="about">
+				<h2 class="about-title">About Myself</h2>
+				<p class="about-text">I am a student third year. Study in IT field. In parallel with main studies I
+					study web development. I don't have work experience. But I really want grow and develop in this
+					field. Now I can create simple website using HTML, CSS, and Vue.js</p>
+			</section>
+			<section id="skills" class="skills">
+				<h2 class="skills-title">Skills</h2>
+				<ul class="skills-list list-left">
+					<li class="skills-item">HTML5, CSS3</li>
+					<li class="skills-item">JavaScript (Basic)</li>
+					<li class="skills-item">Vue.js (Basic)</li>
+					<li class="skills-item">Visual Studio Code</li>
+				</ul>
+			</section>
+			<section id="code" class="code">
+				<h2 class="code-title">Code Example</h2>
+				<p class="code-text">Description: Complete the solution so that the function will break up camel casing,
+					using a space
+					between words.</p>
+				<pre><code class="code-program">function solution(string) {
+	let str2 = ``;
+	for (let i = 0; i &lt; string.length; i++) {
+		str2 += string[i].charCodeAt() > 96 
+		? string[i] 
+		: ` ${string[i]}`;
+	}
+	return str2;
+}</code></pre>
+			</section>
+			<section id="projects" class="projects">
+				<h2 class="projects-title">Projects</h2>
+				<ul class="projects-list list-left">
+					<li class="projects-item">
+						<a class="projects-link" href="https://github.com/Alex06052003/VueProjects/tree/main/ToDoList"
+							target="_blank">ToDoList</a>
+					</li>
+					<li class="projects-item">
+						<a class="projects-link" href="https://github.com/Alex06052003/VueProjects/tree/main/dishes"
+							target="_blank">DishesApp</a>
+					</li>
+					<li class="projects-item">
+						<a class="projects-link"
+							href="https://github.com/Alex06052003/VueProjects/tree/main/contact-app"
+							target="_blank">ContactApp</a>
+					</li>
+				</ul>
+			</section>
+			<section id="experience" class="experience">
+				<h2 class="experience-title">Experience</h2>
+				<ul class="experience-list list-left">
+					<li class="experience-item">Absent</li>
+				</ul>
+			</section>
+			<section id="education" class="education">
+				<h2 class="education-title">Education</h2>
+				<ul class="education-list list-left">
+					<li class="education-item">Incomplete higher education</li>
+				</ul>
+			</section>
+			<section id="english" class="english">
+				<h2 class="english-title">English</h2>
+				<p class="english-text">A1</p>
+			</section>
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="container d-flex">
+			<a href="https://rs.school/courses/javascript-ru" target="_blank">
+				<img src="./assets/svg/rs-school-logo.svg" alt="Logotype RS School" width="150" loading="lazy">
+			</a>
+			<div class="footer-git">
+				<a href="https://github.com/Alex06052003" target="_blank">GitHub</a>
+				<time>2024</time>
+			</div>
+		</div>
+	</footer>
+</body>
 
 </html>
