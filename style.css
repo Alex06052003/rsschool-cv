@@ -1,4 +1,455 @@
-* {
+@font-face {
+    font-family: "ChakraPetch";
+    src: url("./assets/fonts/ChakraPetch-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jost";
+    src: url("./assets/fonts/Jost-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*
+    Нормализация блочной модели
+*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+:where(ul, ol):where([class]) {
+    padding-left: 0;
+}
+
+/**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
+body,
+:where(blockquote, figure):where([class]) {
+    margin: 0;
+}
+
+/**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+    margin-block: 0;
+}
+
+:where(dd[class]) {
+    margin-left: 0;
+}
+
+:where(fieldset[class]) {
+    margin-left: 0;
+    padding: 0;
+    border: none;
+}
+
+/**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+:where(ul[class]) {
+    list-style: none;
+}
+
+/**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+p {
+    --paragraphMarginBottom: 24px;
+
+    margin-block: 0;
+}
+
+/**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+p:where(:not([class]):not(:last-child)) {
+    margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+   Упрощаем работу с изображениями
+  */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/**
+   Наследуем свойства шрифт для полей ввода
+  */
+input,
+textarea,
+select,
+button {
+    font: inherit;
+}
+
+html {
+    /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+    height: 100%;
+}
+
+/**
+   Плавный скролл
+  */
+html,
+:has(:target) {
+    scroll-behavior: smooth;
+    /* scroll-padding-top: calc(var(--header-height) + 10px); */
+}
+
+body {
+    /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+    min-height: 100%;
+    /**
+     Унифицированный интерлиньяж
+    */
+    line-height: 1.5;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+  */
+svg *[fill] {
+    fill: currentColor;
+}
+
+svg *[stroke] {
+    stroke: currentColor;
+}
+
+/**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+svg * {
+    transition-property: fill, stroke;
+}
+
+pre {
     margin: 0;
     padding: 0;
+}
+
+/**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+:root {
+    --color-blue: #05386b;
+    --color-dark-green: #379683;
+    --color--green: #5cdb95;
+    --color-ligth-green: #8ee4af;
+    --color-ligth: #edf5e1;
+
+    --font-family-base: "ChakraPetch", sans-serif;
+    --font-family-accent: "Jost", sans-serif;
+
+    --container-width: 1440px;
+    --container-padding-x: 15px;
+
+    --transiotion-duration: 0.2s;
+
+    --header-height: 90px;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-ligth);
+    background-color: var(--color--green);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+    transition: var(--transiotion-duration);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-blue);
+    transition-duration: var(--transiotion-duration);
+}
+
+a:hover {
+    color: var(--color-dark-green);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    font-size: 52px;
+    color: var(--color-light);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+svg {
+    fill: var(--color-blue);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x);
+}
+
+.list-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--header-height);
+    background-color: var(--color--green);
+    box-shadow: 0px 20px 10px 0px var(--color--green);
+    z-index: 10;
+}
+
+.header-menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 50px;
+}
+
+.header-menu-link {
+    display: inline-flex;
+    align-items: center;
+    height: var(--header-height);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: clamp(20px, 15.63vw, 300px);
+    padding-top: 95px;
+    flex-wrap: wrap;
+}
+
+.profile-image {
+    border: 5px solid var(--color-blue);
+    border-radius: 100%;
+    transition-duration: var(--transiotion-duration);
+}
+
+.profile-image:hover {
+    border: 5px solid var(--color-dark-green);
+}
+
+.profile-title {
+    font-size: 72px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.contacts {
+    padding-top: 95px;
+    text-align: center;
+}
+
+.contacts-list {
+    row-gap: 20px;
+}
+
+.contacts-item {
+    position: relative;
+    padding-left: 25px;
+}
+
+.contacts-item::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    translate: -10% -50%;
+    width: 25px;
+    aspect-ratio: 1;
+}
+
+.contacts-item:nth-child(1)::before {
+    background: url("./assets/svg/location.svg") center/contain no-repeat;
+}
+
+.contacts-item:nth-child(2)::before {
+    background: url("./assets/svg/phone.svg") center/contain no-repeat;
+}
+
+.contacts-item:nth-child(3)::before {
+    background: url("./assets/svg/email.svg") center/contain no-repeat;
+}
+
+.contacts-item:nth-child(4)::before {
+    background: url("./assets/svg/discord.svg") center/contain no-repeat;
+}
+
+.contacts-item:nth-child(5)::before {
+    background: url("./assets/svg/github.svg") center/contain no-repeat;
+}
+
+.about {
+    padding-top: 95px;
+    text-align: center;
+}
+
+.skills {
+    padding-top: 95px;
+    text-align: center;
+}
+
+.skills-item {
+    position: relative;
+    padding-left: 25px;
+}
+
+.skills-item::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 15px;
+    aspect-ratio: 1;
+    border: 2px solid var(--color-blue);
+    border-radius: 50%;
+}
+
+.code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 95px;
+}
+
+.code-program {
+    color: var(--color-blue);
+}
+
+.projects {
+    padding-top: 95px;
+    text-align: center;
+}
+
+.projects-item {
+    position: relative;
+    padding-left: 25px;
+}
+
+.projects-item::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 15px;
+    aspect-ratio: 1;
+    border: 2px solid var(--color-ligth);
+    border-radius: 50%;
+}
+
+.experience {
+    padding-top: 95px;
+    text-align: center;
+}
+
+.experience-item {
+    color: var(--color-blue);
+}
+
+.education {
+    padding-top: 95px;
+    text-align: center;
+}
+
+.education-item {
+    color: var(--color-blue);
+}
+
+.english {
+    padding-top: 95px;
+    text-align: center;
+}
+
+.english-text {
+    color: var(--color-blue);
+}
+
+.footer {
+    padding-block: 95px 35px;
+}
+
+.container.d-flex {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer-git {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1170px) {
+    .header,
+    .header-menu-link {
+        height: 45px;
+    }
+
+    .header-menu-link {
+        align-items: end;
+    }
 }
